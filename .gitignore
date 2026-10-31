@@ -1,0 +1,18 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Arquivos de compilação
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+
+# Banco de dados local
+*.mdf
+*.ldf
+
+# Arquivos temporários
+*.tmp
+*.log

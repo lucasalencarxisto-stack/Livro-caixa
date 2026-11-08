@@ -76,6 +76,31 @@ namespace LivroCaixa
 
             }
         }
+        protected void btnCadastroUsuarios_Click(object sender, EventArgs e)
+        {
+            if (Session["UsuarioId"] == null ||
+                Session["UsuarioPerfil"]?.ToString() != "ADM")
+            {
+                lblMensagem.Text = "Acesso restrito a administradores.";
+                return;
+            }
+
+            Response.Redirect("CadastroUsuarios.aspx");
+        }
+
+
+        protected void btnFluxoCaixa_Click(object sender, EventArgs e)
+        {
+            if (Session["UsuarioId"] == null)
+            {
+                lblMensagem.Text = "Faça login para acessar o fluxo de caixa.";
+                return;
+            }
+
+            Response.Redirect("FluxoCaixa.aspx");
+        }
+
+
         protected void btnSair_Click(object sender, EventArgs e)
         {
             Session.Clear();
@@ -126,6 +151,7 @@ namespace LivroCaixa
 
                 Session["UsuarioId"] = usuario["Id"];
                 Session["UsuarioNome"] = usuario["Nome"].ToString();
+                Session["UsuarioPerfil"] = usuario["Perfil"].ToString();
 
                 pnLogin.Visible = false;
                 pnMenu.Visible = true;
@@ -133,11 +159,16 @@ namespace LivroCaixa
                 lblMensagem.Text = "Bem-vindo, " +
                     Server.HtmlEncode(usuario["Nome"].ToString()) + "!";
             }
+
+
             catch (Exception ex)
             {
+                System.Diagnostics.Trace.TraceError(ex.ToString());
+
                 lblMensagem.Text = "Erro ao processar o login.";
-                System.Diagnostics.Debug.WriteLine(ex);
             }
+
+
             finally
             {
                 banco.Fechar();

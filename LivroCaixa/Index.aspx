@@ -45,7 +45,19 @@
         <h3>Menu Principal</h3>
         <p>Bem-vindo ao Livro Caixa!</p>
         <p>Cadastro do Usuário</p>
-        <p>Fluxo de caixa</p>
+            <asp:Button
+                ID="btnCadastroUsuarios"
+                runat="server"
+                Text="Cadastro de Usuários"
+                OnClick="btnCadastroUsuarios_Click" />
+         <p>Fluxo de Caixa</p>
+           <asp:Button
+             ID="btnFluxoCaixa"
+             runat="server"
+             Text="Fluxo de Caixa"
+             OnClick="btnFluxoCaixa_Click" />
+
+        <p>Sair</p>  
         <asp:Button
             ID="btnSair"
             runat="server"

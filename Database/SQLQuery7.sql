@@ -1,0 +1,5 @@
+﻿ALTER TABLE dbo.Usuario
+ADD 
+	CPF VARCHAR(11) NULL,
+	Perfil VARCHAR(3) NOT NULL 
+		CONSTRAINT DF_Usuario_Perfil DEFAULT 'USU';
